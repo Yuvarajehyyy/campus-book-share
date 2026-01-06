@@ -100,26 +100,42 @@ const BookForm = () => {
   return (
     <div className="page-container flex flex-col min-h-screen">
       <Header />
-      <main className="flex-1 py-8">
-        <div className="content-container max-w-2xl">
-          <Link to="/dashboard" className="inline-flex items-center gap-2 text-muted-foreground hover:text-foreground mb-6">
+      <main className="flex-1 py-6">
+        <div className="content-container max-w-xl">
+          <Link to="/dashboard" className="inline-flex items-center gap-1.5 text-sm text-muted-foreground hover:text-foreground mb-5">
             <ArrowLeft className="h-4 w-4" /> Back to Dashboard
           </Link>
-          <h1 className="font-serif text-3xl font-bold mb-8">{isEditing ? "Edit Book" : "List a Book"}</h1>
-          <form onSubmit={handleSubmit} className="space-y-6 bg-card rounded-xl border p-6">
+          <h1 className="text-2xl font-semibold mb-6">{isEditing ? "Edit Book" : "List a Book"}</h1>
+          <form onSubmit={handleSubmit} className="space-y-5 bg-card rounded-lg border border-border p-5">
             <div className="grid md:grid-cols-2 gap-4">
-              <div><Label>Title *</Label><Input value={formData.title} onChange={(e) => setFormData({...formData, title: e.target.value})} required className="input-field" /></div>
-              <div><Label>Author *</Label><Input value={formData.author} onChange={(e) => setFormData({...formData, author: e.target.value})} required className="input-field" /></div>
+              <div className="space-y-1.5">
+                <Label className="text-sm">Title *</Label>
+                <Input value={formData.title} onChange={(e) => setFormData({...formData, title: e.target.value})} required className="input-field text-sm" />
+              </div>
+              <div className="space-y-1.5">
+                <Label className="text-sm">Author *</Label>
+                <Input value={formData.author} onChange={(e) => setFormData({...formData, author: e.target.value})} required className="input-field text-sm" />
+              </div>
             </div>
             <div className="grid md:grid-cols-2 gap-4">
-              <div><Label>Edition</Label><Input value={formData.edition} onChange={(e) => setFormData({...formData, edition: e.target.value})} className="input-field" /></div>
-              <div><Label>Course Tag</Label><Input placeholder="B.E CSE Sem 4" value={formData.course_tag} onChange={(e) => setFormData({...formData, course_tag: e.target.value})} className="input-field" /></div>
+              <div className="space-y-1.5">
+                <Label className="text-sm">Edition</Label>
+                <Input value={formData.edition} onChange={(e) => setFormData({...formData, edition: e.target.value})} className="input-field text-sm" />
+              </div>
+              <div className="space-y-1.5">
+                <Label className="text-sm">Course Tag</Label>
+                <Input placeholder="B.E CSE Sem 4" value={formData.course_tag} onChange={(e) => setFormData({...formData, course_tag: e.target.value})} className="input-field text-sm" />
+              </div>
             </div>
-            <div><Label>Description</Label><Textarea value={formData.description} onChange={(e) => setFormData({...formData, description: e.target.value})} rows={4} className="input-field" /></div>
+            <div className="space-y-1.5">
+              <Label className="text-sm">Description</Label>
+              <Textarea value={formData.description} onChange={(e) => setFormData({...formData, description: e.target.value})} rows={3} className="input-field text-sm" />
+            </div>
             <div className="grid md:grid-cols-2 gap-4">
-              <div><Label>Category *</Label>
+              <div className="space-y-1.5">
+                <Label className="text-sm">Category *</Label>
                 <Select value={formData.category} onValueChange={(v: any) => setFormData({...formData, category: v})}>
-                  <SelectTrigger><SelectValue /></SelectTrigger>
+                  <SelectTrigger className="text-sm"><SelectValue /></SelectTrigger>
                   <SelectContent>
                     <SelectItem value="sell">For Sale</SelectItem>
                     <SelectItem value="lend">For Lending</SelectItem>
@@ -127,17 +143,30 @@ const BookForm = () => {
                   </SelectContent>
                 </Select>
               </div>
-              {formData.category === "sell" && <div><Label>Price (₹)</Label><Input type="number" min="0" value={formData.price} onChange={(e) => setFormData({...formData, price: e.target.value})} className="input-field" /></div>}
+              {formData.category === "sell" && (
+                <div className="space-y-1.5">
+                  <Label className="text-sm">Price (₹)</Label>
+                  <Input type="number" min="0" value={formData.price} onChange={(e) => setFormData({...formData, price: e.target.value})} className="input-field text-sm" />
+                </div>
+              )}
             </div>
-            <div>
-              <Label>Book Image</Label>
-              <div className="mt-2 border-2 border-dashed rounded-xl p-6 text-center">
-                {imagePreview ? <img src={imagePreview} alt="Preview" className="max-h-48 mx-auto rounded-lg mb-4" /> : <BookOpen className="h-12 w-12 mx-auto text-muted-foreground mb-2" />}
+            <div className="space-y-1.5">
+              <Label className="text-sm">Book Image</Label>
+              <div className="mt-1.5 border border-dashed border-border rounded-lg p-5 text-center">
+                {imagePreview ? (
+                  <img src={imagePreview} alt="Preview" className="max-h-40 mx-auto rounded-md mb-3" />
+                ) : (
+                  <BookOpen className="h-10 w-10 mx-auto text-muted-foreground/40 mb-2" />
+                )}
                 <input type="file" accept="image/*" onChange={handleImageChange} className="hidden" id="image-upload" />
-                <label htmlFor="image-upload" className="cursor-pointer text-primary hover:underline"><Upload className="h-4 w-4 inline mr-1" />Upload Image</label>
+                <label htmlFor="image-upload" className="cursor-pointer text-sm text-primary hover:underline">
+                  <Upload className="h-3.5 w-3.5 inline mr-1" />Upload Image
+                </label>
               </div>
             </div>
-            <Button type="submit" variant="hero" className="w-full" disabled={loading}>{loading ? "Saving..." : isEditing ? "Update Book" : "List Book"}</Button>
+            <Button type="submit" className="w-full font-medium" disabled={loading}>
+              {loading ? "Saving..." : isEditing ? "Update Book" : "List Book"}
+            </Button>
           </form>
         </div>
       </main>

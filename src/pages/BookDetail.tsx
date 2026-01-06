@@ -83,11 +83,11 @@ const BookDetail = () => {
   const getStatusStyles = (status: string) => {
     switch (status) {
       case "available":
-        return "text-available bg-available/10";
+        return "text-available bg-available/10 border-available/20";
       case "reserved":
-        return "text-reserved bg-reserved/10";
+        return "text-reserved bg-reserved/10 border-reserved/20";
       case "taken":
-        return "text-taken bg-taken/10";
+        return "text-taken bg-taken/10 border-taken/20";
       default:
         return "";
     }
@@ -119,14 +119,14 @@ const BookDetail = () => {
     return (
       <div className="page-container flex flex-col min-h-screen">
         <Header />
-        <main className="flex-1 py-8">
+        <main className="flex-1 py-6">
           <div className="content-container">
-            <div className="grid md:grid-cols-2 gap-8">
-              <Skeleton className="aspect-[3/4] rounded-xl" />
-              <div className="space-y-4">
-                <Skeleton className="h-10 w-3/4" />
-                <Skeleton className="h-6 w-1/2" />
-                <Skeleton className="h-24 w-full" />
+            <div className="grid md:grid-cols-2 gap-6">
+              <Skeleton className="aspect-[4/5] rounded-lg" />
+              <div className="space-y-3">
+                <Skeleton className="h-8 w-3/4" />
+                <Skeleton className="h-5 w-1/2" />
+                <Skeleton className="h-20 w-full" />
               </div>
             </div>
           </div>
@@ -142,15 +142,15 @@ const BookDetail = () => {
         <Header />
         <main className="flex-1 flex items-center justify-center">
           <div className="text-center">
-            <BookOpen className="h-16 w-16 text-muted-foreground mx-auto mb-4" />
-            <h1 className="font-serif text-2xl font-bold text-foreground mb-2">
+            <BookOpen className="h-12 w-12 text-muted-foreground mx-auto mb-3" />
+            <h1 className="text-xl font-semibold text-foreground mb-1.5">
               Book not found
             </h1>
-            <p className="text-muted-foreground mb-4">
+            <p className="text-sm text-muted-foreground mb-4">
               This book may have been removed or doesn't exist.
             </p>
             <Link to="/">
-              <Button variant="hero">
+              <Button>
                 <ArrowLeft className="h-4 w-4" />
                 Back to Books
               </Button>
@@ -166,21 +166,21 @@ const BookDetail = () => {
     <div className="page-container flex flex-col min-h-screen">
       <Header />
 
-      <main className="flex-1 py-8">
+      <main className="flex-1 py-6">
         <div className="content-container">
           {/* Back Button */}
           <Link
             to="/"
-            className="inline-flex items-center gap-2 text-muted-foreground hover:text-foreground mb-6 transition-colors"
+            className="inline-flex items-center gap-1.5 text-sm text-muted-foreground hover:text-foreground mb-5 transition-colors"
           >
             <ArrowLeft className="h-4 w-4" />
             Back to Books
           </Link>
 
-          <div className="grid md:grid-cols-2 gap-8 lg:gap-12">
+          <div className="grid md:grid-cols-2 gap-6 lg:gap-8">
             {/* Image */}
             <div className="relative">
-              <div className="aspect-[3/4] bg-secondary rounded-xl overflow-hidden shadow-lg">
+              <div className="aspect-[4/5] bg-secondary rounded-lg overflow-hidden">
                 {book.image_url ? (
                   <img
                     src={book.image_url}
@@ -188,22 +188,22 @@ const BookDetail = () => {
                     className="w-full h-full object-cover"
                   />
                 ) : (
-                  <div className="w-full h-full flex items-center justify-center bg-gradient-warm">
-                    <BookOpen className="h-24 w-24 text-muted-foreground/30" />
+                  <div className="w-full h-full flex items-center justify-center bg-secondary">
+                    <BookOpen className="h-16 w-16 text-muted-foreground/30" />
                   </div>
                 )}
               </div>
 
               {/* Category Badge */}
               <Badge
-                className={`absolute top-4 left-4 text-sm ${getCategoryStyles(book.category)}`}
+                className={`absolute top-3 left-3 ${getCategoryStyles(book.category)}`}
               >
                 {getCategoryLabel()}
               </Badge>
             </div>
 
             {/* Details */}
-            <div className="space-y-6">
+            <div className="space-y-4">
               {/* Status */}
               <Badge
                 variant="outline"
@@ -214,12 +214,12 @@ const BookDetail = () => {
 
               {/* Title & Author */}
               <div>
-                <h1 className="font-serif text-3xl md:text-4xl font-bold text-foreground mb-2">
+                <h1 className="text-2xl md:text-3xl font-semibold text-foreground mb-1.5">
                   {book.title}
                 </h1>
-                <p className="text-xl text-muted-foreground">by {book.author}</p>
+                <p className="text-lg text-muted-foreground">by {book.author}</p>
                 {book.edition && (
-                  <p className="text-muted-foreground mt-1">
+                  <p className="text-sm text-muted-foreground mt-0.5">
                     Edition: {book.edition}
                   </p>
                 )}
@@ -227,7 +227,7 @@ const BookDetail = () => {
 
               {/* Course Tag */}
               {book.course_tag && (
-                <div className="flex items-center gap-2 text-muted-foreground">
+                <div className="flex items-center gap-1.5 text-sm text-muted-foreground">
                   <Tag className="h-4 w-4" />
                   <span>{book.course_tag}</span>
                 </div>
@@ -235,30 +235,30 @@ const BookDetail = () => {
 
               {/* Description */}
               {book.description && (
-                <div className="bg-card rounded-xl border border-border p-4">
-                  <h3 className="font-medium text-foreground mb-2">Description</h3>
-                  <p className="text-muted-foreground whitespace-pre-wrap">
+                <div className="bg-card rounded-lg border border-border p-4">
+                  <h3 className="text-sm font-medium text-foreground mb-1.5">Description</h3>
+                  <p className="text-sm text-muted-foreground whitespace-pre-wrap">
                     {book.description}
                   </p>
                 </div>
               )}
 
               {/* Owner Info */}
-              <div className="bg-card rounded-xl border border-border p-4 space-y-3">
-                <h3 className="font-medium text-foreground">Listed by</h3>
-                <div className="space-y-2">
-                  <div className="flex items-center gap-2 text-muted-foreground">
+              <div className="bg-card rounded-lg border border-border p-4 space-y-2">
+                <h3 className="text-sm font-medium text-foreground">Listed by</h3>
+                <div className="space-y-1.5">
+                  <div className="flex items-center gap-2 text-sm text-muted-foreground">
                     <User className="h-4 w-4" />
                     <span>{book.owner.name}</span>
                   </div>
                   {book.owner.department && (
-                    <div className="flex items-center gap-2 text-muted-foreground">
+                    <div className="flex items-center gap-2 text-sm text-muted-foreground">
                       <Building className="h-4 w-4" />
                       <span>{book.owner.department}</span>
                     </div>
                   )}
                   {book.owner.semester && (
-                    <div className="flex items-center gap-2 text-muted-foreground">
+                    <div className="flex items-center gap-2 text-sm text-muted-foreground">
                       <GraduationCap className="h-4 w-4" />
                       <span>{book.owner.semester}</span>
                     </div>
@@ -267,8 +267,8 @@ const BookDetail = () => {
               </div>
 
               {/* Listed Date */}
-              <div className="flex items-center gap-2 text-sm text-muted-foreground">
-                <Calendar className="h-4 w-4" />
+              <div className="flex items-center gap-1.5 text-xs text-muted-foreground">
+                <Calendar className="h-3.5 w-3.5" />
                 <span>
                   Listed on {new Date(book.created_at).toLocaleDateString()}
                 </span>
@@ -277,12 +277,11 @@ const BookDetail = () => {
               {/* Contact Button */}
               {book.status === "available" && (
                 <Button
-                  variant="hero"
                   size="lg"
-                  className="w-full"
+                  className="w-full font-medium"
                   onClick={handleContact}
                 >
-                  <Mail className="h-5 w-5" />
+                  <Mail className="h-4 w-4" />
                   Contact Owner
                 </Button>
               )}

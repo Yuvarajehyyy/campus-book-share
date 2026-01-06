@@ -37,8 +37,8 @@ const BookFilters = ({
   };
 
   return (
-    <div className="bg-card rounded-xl border border-border p-4 md:p-6 shadow-sm">
-      <div className="flex flex-col md:flex-row gap-4">
+    <div className="bg-card rounded-lg border border-border p-4">
+      <div className="flex flex-col md:flex-row gap-3">
         {/* Search */}
         <div className="relative flex-1">
           <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
@@ -47,13 +47,13 @@ const BookFilters = ({
             placeholder="Search by title or author..."
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
-            className="pl-10 input-field"
+            className="pl-9 input-field text-sm"
           />
         </div>
 
         {/* Category Filter */}
         <Select value={categoryFilter} onValueChange={setCategoryFilter}>
-          <SelectTrigger className="w-full md:w-[180px] input-field">
+          <SelectTrigger className="w-full md:w-[160px] input-field text-sm">
             <Filter className="h-4 w-4 mr-2 text-muted-foreground" />
             <SelectValue placeholder="Category" />
           </SelectTrigger>
@@ -67,7 +67,7 @@ const BookFilters = ({
 
         {/* Course Filter */}
         <Select value={courseFilter} onValueChange={setCourseFilter}>
-          <SelectTrigger className="w-full md:w-[200px] input-field">
+          <SelectTrigger className="w-full md:w-[180px] input-field text-sm">
             <SelectValue placeholder="Course/Semester" />
           </SelectTrigger>
           <SelectContent>
@@ -86,7 +86,7 @@ const BookFilters = ({
             variant="ghost" 
             size="sm" 
             onClick={clearFilters}
-            className="shrink-0"
+            className="shrink-0 text-sm"
           >
             <X className="h-4 w-4 mr-1" />
             Clear

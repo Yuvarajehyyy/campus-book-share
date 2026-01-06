@@ -40,16 +40,33 @@ const Profile = () => {
   return (
     <div className="page-container flex flex-col min-h-screen">
       <Header />
-      <main className="flex-1 py-8">
-        <div className="content-container max-w-xl">
-          <h1 className="font-serif text-3xl font-bold mb-8">My Profile</h1>
-          <form onSubmit={handleSubmit} className="space-y-4 bg-card rounded-xl border p-6">
-            <div><Label>Name</Label><Input value={profile.name} onChange={(e) => setProfile({...profile, name: e.target.value})} className="input-field" /></div>
-            <div><Label>Email</Label><Input value={profile.email} disabled className="input-field opacity-50" /></div>
-            <div><Label>Department</Label><Input value={profile.department} onChange={(e) => setProfile({...profile, department: e.target.value})} className="input-field" /></div>
-            <div><Label>Semester/Year</Label><Input value={profile.semester} onChange={(e) => setProfile({...profile, semester: e.target.value})} className="input-field" /></div>
-            <div><Label>Phone</Label><Input value={profile.phone} onChange={(e) => setProfile({...profile, phone: e.target.value})} className="input-field" /></div>
-            <Button type="submit" variant="hero" className="w-full" disabled={loading}>{loading ? "Saving..." : "Update Profile"}</Button>
+      <main className="flex-1 py-6">
+        <div className="content-container max-w-md">
+          <h1 className="text-2xl font-semibold mb-6">My Profile</h1>
+          <form onSubmit={handleSubmit} className="space-y-4 bg-card rounded-lg border border-border p-5">
+            <div className="space-y-1.5">
+              <Label className="text-sm">Name</Label>
+              <Input value={profile.name} onChange={(e) => setProfile({...profile, name: e.target.value})} className="input-field text-sm" />
+            </div>
+            <div className="space-y-1.5">
+              <Label className="text-sm">Email</Label>
+              <Input value={profile.email} disabled className="input-field text-sm opacity-60" />
+            </div>
+            <div className="space-y-1.5">
+              <Label className="text-sm">Department</Label>
+              <Input value={profile.department} onChange={(e) => setProfile({...profile, department: e.target.value})} className="input-field text-sm" />
+            </div>
+            <div className="space-y-1.5">
+              <Label className="text-sm">Semester/Year</Label>
+              <Input value={profile.semester} onChange={(e) => setProfile({...profile, semester: e.target.value})} className="input-field text-sm" />
+            </div>
+            <div className="space-y-1.5">
+              <Label className="text-sm">Phone</Label>
+              <Input value={profile.phone} onChange={(e) => setProfile({...profile, phone: e.target.value})} className="input-field text-sm" />
+            </div>
+            <Button type="submit" className="w-full font-medium" disabled={loading}>
+              {loading ? "Saving..." : "Update Profile"}
+            </Button>
           </form>
         </div>
       </main>

@@ -4,20 +4,20 @@ import { Link } from "react-router-dom";
 const Footer = () => {
   return (
     <footer className="bg-card border-t border-border mt-auto">
-      <div className="content-container py-8">
-        <div className="flex flex-col md:flex-row items-center justify-between gap-4">
+      <div className="content-container py-6">
+        <div className="flex flex-col md:flex-row items-center justify-between gap-3">
           {/* Logo */}
           <Link to="/" className="flex items-center gap-2">
-            <div className="p-2 bg-primary rounded-lg">
-              <BookOpen className="h-4 w-4 text-primary-foreground" />
+            <div className="p-1.5 bg-primary rounded-md">
+              <BookOpen className="h-3.5 w-3.5 text-primary-foreground" />
             </div>
-            <span className="font-serif text-lg font-bold text-foreground">
+            <span className="text-base font-semibold text-foreground">
               BookSwap
             </span>
           </Link>
 
           {/* Links */}
-          <nav className="flex items-center gap-6 text-sm text-muted-foreground">
+          <nav className="flex items-center gap-5 text-sm text-muted-foreground">
             <Link to="/" className="hover:text-foreground transition-colors">
               Browse
             </Link>

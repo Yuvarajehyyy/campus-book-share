@@ -30,24 +30,24 @@ const Header = () => {
   };
 
   return (
-    <header className="sticky top-0 z-50 bg-background/95 backdrop-blur-sm border-b border-border">
+    <header className="sticky top-0 z-50 bg-card/95 backdrop-blur-sm border-b border-border">
       <div className="content-container">
-        <div className="flex items-center justify-between h-16">
+        <div className="flex items-center justify-between h-14">
           {/* Logo */}
           <Link to="/" className="flex items-center gap-2 group">
-            <div className="p-2 bg-primary rounded-lg group-hover:shadow-glow transition-shadow duration-300">
-              <BookOpen className="h-5 w-5 text-primary-foreground" />
+            <div className="p-1.5 bg-primary rounded-md transition-colors">
+              <BookOpen className="h-4 w-4 text-primary-foreground" />
             </div>
-            <span className="font-serif text-xl font-bold text-foreground">
+            <span className="text-lg font-semibold text-foreground">
               BookSwap
             </span>
           </Link>
 
           {/* Desktop Navigation */}
-          <nav className="hidden md:flex items-center gap-6">
+          <nav className="hidden md:flex items-center gap-5">
             <Link 
               to="/" 
-              className="text-muted-foreground hover:text-foreground transition-colors link-underline"
+              className="text-sm text-muted-foreground hover:text-foreground transition-colors"
             >
               Browse Books
             </Link>
@@ -55,13 +55,13 @@ const Header = () => {
               <>
                 <Link 
                   to="/dashboard" 
-                  className="text-muted-foreground hover:text-foreground transition-colors link-underline"
+                  className="text-sm text-muted-foreground hover:text-foreground transition-colors"
                 >
                   My Dashboard
                 </Link>
                 <Link 
                   to="/books/new" 
-                  className="text-muted-foreground hover:text-foreground transition-colors link-underline"
+                  className="text-sm text-muted-foreground hover:text-foreground transition-colors"
                 >
                   List a Book
                 </Link>
@@ -70,21 +70,21 @@ const Header = () => {
           </nav>
 
           {/* Auth Buttons */}
-          <div className="hidden md:flex items-center gap-3">
+          <div className="hidden md:flex items-center gap-2">
             {user ? (
               <>
                 <Link to="/profile">
-                  <Button variant="ghost" size="sm">
+                  <Button variant="ghost" size="sm" className="text-sm font-normal">
                     <User className="h-4 w-4" />
                     Profile
                   </Button>
                 </Link>
-                <Button variant="outline" size="sm" onClick={handleLogout}>
+                <Button variant="ghost" size="sm" onClick={handleLogout} className="text-sm font-normal">
                   <LogOut className="h-4 w-4" />
                   Logout
                 </Button>
                 <Link to="/books/new">
-                  <Button variant="hero" size="sm">
+                  <Button variant="default" size="sm" className="text-sm font-medium">
                     <Plus className="h-4 w-4" />
                     List Book
                   </Button>
@@ -93,12 +93,12 @@ const Header = () => {
             ) : (
               <>
                 <Link to="/auth">
-                  <Button variant="ghost" size="sm">
+                  <Button variant="ghost" size="sm" className="text-sm font-normal">
                     Sign In
                   </Button>
                 </Link>
                 <Link to="/auth?mode=signup">
-                  <Button variant="hero" size="sm">
+                  <Button variant="default" size="sm" className="text-sm font-medium">
                     Get Started
                   </Button>
                 </Link>
@@ -111,17 +111,17 @@ const Header = () => {
             className="md:hidden p-2 text-muted-foreground hover:text-foreground"
             onClick={() => setIsMenuOpen(!isMenuOpen)}
           >
-            {isMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+            {isMenuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
           </button>
         </div>
 
         {/* Mobile Menu */}
         {isMenuOpen && (
-          <div className="md:hidden py-4 border-t border-border animate-fade-in">
-            <nav className="flex flex-col gap-3">
+          <div className="md:hidden py-3 border-t border-border animate-fade-in">
+            <nav className="flex flex-col gap-1">
               <Link 
                 to="/" 
-                className="px-4 py-2 text-muted-foreground hover:text-foreground hover:bg-secondary rounded-lg transition-colors"
+                className="px-3 py-2 text-sm text-muted-foreground hover:text-foreground hover:bg-secondary rounded-md transition-colors"
                 onClick={() => setIsMenuOpen(false)}
               >
                 Browse Books
@@ -130,27 +130,27 @@ const Header = () => {
                 <>
                   <Link 
                     to="/dashboard" 
-                    className="px-4 py-2 text-muted-foreground hover:text-foreground hover:bg-secondary rounded-lg transition-colors"
+                    className="px-3 py-2 text-sm text-muted-foreground hover:text-foreground hover:bg-secondary rounded-md transition-colors"
                     onClick={() => setIsMenuOpen(false)}
                   >
                     My Dashboard
                   </Link>
                   <Link 
                     to="/books/new" 
-                    className="px-4 py-2 text-muted-foreground hover:text-foreground hover:bg-secondary rounded-lg transition-colors"
+                    className="px-3 py-2 text-sm text-muted-foreground hover:text-foreground hover:bg-secondary rounded-md transition-colors"
                     onClick={() => setIsMenuOpen(false)}
                   >
                     List a Book
                   </Link>
                   <Link 
                     to="/profile" 
-                    className="px-4 py-2 text-muted-foreground hover:text-foreground hover:bg-secondary rounded-lg transition-colors"
+                    className="px-3 py-2 text-sm text-muted-foreground hover:text-foreground hover:bg-secondary rounded-md transition-colors"
                     onClick={() => setIsMenuOpen(false)}
                   >
                     Profile
                   </Link>
                   <button 
-                    className="px-4 py-2 text-left text-muted-foreground hover:text-foreground hover:bg-secondary rounded-lg transition-colors"
+                    className="px-3 py-2 text-left text-sm text-muted-foreground hover:text-foreground hover:bg-secondary rounded-md transition-colors"
                     onClick={() => {
                       handleLogout();
                       setIsMenuOpen(false);
@@ -163,14 +163,14 @@ const Header = () => {
                 <>
                   <Link 
                     to="/auth" 
-                    className="px-4 py-2 text-muted-foreground hover:text-foreground hover:bg-secondary rounded-lg transition-colors"
+                    className="px-3 py-2 text-sm text-muted-foreground hover:text-foreground hover:bg-secondary rounded-md transition-colors"
                     onClick={() => setIsMenuOpen(false)}
                   >
                     Sign In
                   </Link>
                   <Link 
                     to="/auth?mode=signup" 
-                    className="px-4 py-2 text-muted-foreground hover:text-foreground hover:bg-secondary rounded-lg transition-colors"
+                    className="px-3 py-2 text-sm text-muted-foreground hover:text-foreground hover:bg-secondary rounded-md transition-colors"
                     onClick={() => setIsMenuOpen(false)}
                   >
                     Get Started
