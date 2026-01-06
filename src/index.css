@@ -2,153 +2,127 @@
 @tailwind components;
 @tailwind utilities;
 
-@import '@fontsource/libre-baskerville/400.css';
-@import '@fontsource/libre-baskerville/700.css';
-@import '@fontsource/inter/400.css';
-@import '@fontsource/inter/500.css';
-@import '@fontsource/inter/600.css';
-@import '@fontsource/inter/700.css';
+@import '@fontsource/poppins/400.css';
+@import '@fontsource/poppins/500.css';
+@import '@fontsource/poppins/600.css';
 
 /* 
   Book Exchange Design System
-  Theme: Warm Academic Library
-  Colors: Cream, Rich Brown, Forest Green, Warm accents
+  Theme: Warm, Clean, Student-Friendly
+  Colors: Soft cream, warm beige, muted green accents
 */
 
 @layer base {
   :root {
-    /* Warm cream background */
-    --background: 45 30% 97%;
-    --foreground: 25 30% 15%;
+    /* Warm off-white background */
+    --background: 40 33% 98%;
+    --foreground: 30 15% 25%;
 
-    /* Cards - slightly warmer than background */
-    --card: 40 25% 95%;
-    --card-foreground: 25 30% 15%;
+    /* Cards - soft cream */
+    --card: 38 40% 97%;
+    --card-foreground: 30 15% 25%;
 
     /* Popover */
-    --popover: 40 25% 95%;
-    --popover-foreground: 25 30% 15%;
+    --popover: 38 40% 97%;
+    --popover-foreground: 30 15% 25%;
 
-    /* Primary - Rich forest green */
-    --primary: 145 35% 28%;
-    --primary-foreground: 45 30% 97%;
+    /* Primary - Muted warm green */
+    --primary: 145 25% 38%;
+    --primary-foreground: 40 33% 98%;
 
-    /* Secondary - Warm tan */
-    --secondary: 35 30% 88%;
-    --secondary-foreground: 25 30% 20%;
+    /* Secondary - Soft sand/cream */
+    --secondary: 35 25% 93%;
+    --secondary-foreground: 30 15% 30%;
 
-    /* Muted - Soft beige */
-    --muted: 35 20% 90%;
-    --muted-foreground: 25 15% 45%;
+    /* Muted - Light warm gray */
+    --muted: 35 18% 92%;
+    --muted-foreground: 30 10% 50%;
 
-    /* Accent - Warm amber */
-    --accent: 35 65% 55%;
-    --accent-foreground: 25 30% 15%;
+    /* Accent - Warm sand */
+    --accent: 32 35% 88%;
+    --accent-foreground: 30 15% 25%;
 
     /* Destructive */
-    --destructive: 0 65% 50%;
-    --destructive-foreground: 45 30% 97%;
+    --destructive: 0 55% 55%;
+    --destructive-foreground: 40 33% 98%;
 
-    /* Borders & inputs */
-    --border: 35 20% 82%;
-    --input: 35 20% 85%;
-    --ring: 145 35% 28%;
+    /* Borders & inputs - soft, light */
+    --border: 35 18% 88%;
+    --input: 35 20% 91%;
+    --ring: 145 25% 38%;
 
-    --radius: 0.75rem;
+    --radius: 0.625rem;
 
     /* Custom colors for book categories */
-    --sell: 35 80% 55%;
-    --sell-foreground: 25 30% 15%;
-    --lend: 200 60% 45%;
-    --lend-foreground: 45 30% 97%;
-    --free: 145 50% 40%;
-    --free-foreground: 45 30% 97%;
+    --sell: 32 60% 52%;
+    --sell-foreground: 40 33% 98%;
+    --lend: 195 45% 48%;
+    --lend-foreground: 40 33% 98%;
+    --free: 145 40% 42%;
+    --free-foreground: 40 33% 98%;
 
     /* Status colors */
-    --available: 145 50% 40%;
-    --reserved: 35 80% 55%;
-    --taken: 0 50% 50%;
+    --available: 145 40% 42%;
+    --reserved: 32 60% 52%;
+    --taken: 0 45% 52%;
 
-    /* Gradients */
-    --gradient-hero: linear-gradient(135deg, hsl(145 35% 28%), hsl(145 35% 22%));
-    --gradient-card: linear-gradient(180deg, hsl(40 25% 96%), hsl(40 25% 93%));
-    --gradient-warm: linear-gradient(135deg, hsl(35 65% 55% / 0.15), hsl(45 30% 97%));
-
-    /* Shadows */
-    --shadow-sm: 0 1px 2px hsl(25 30% 15% / 0.05);
-    --shadow-md: 0 4px 12px hsl(25 30% 15% / 0.08);
-    --shadow-lg: 0 8px 24px hsl(25 30% 15% / 0.12);
-    --shadow-glow: 0 0 20px hsl(145 35% 28% / 0.2);
+    /* Shadows - very subtle */
+    --shadow-sm: 0 1px 2px hsl(30 15% 25% / 0.04);
+    --shadow-md: 0 2px 8px hsl(30 15% 25% / 0.06);
+    --shadow-lg: 0 4px 16px hsl(30 15% 25% / 0.08);
 
     /* Sidebar */
-    --sidebar-background: 40 25% 95%;
-    --sidebar-foreground: 25 30% 15%;
-    --sidebar-primary: 145 35% 28%;
-    --sidebar-primary-foreground: 45 30% 97%;
-    --sidebar-accent: 35 30% 88%;
-    --sidebar-accent-foreground: 25 30% 20%;
-    --sidebar-border: 35 20% 82%;
-    --sidebar-ring: 145 35% 28%;
+    --sidebar-background: 38 40% 97%;
+    --sidebar-foreground: 30 15% 25%;
+    --sidebar-primary: 145 25% 38%;
+    --sidebar-primary-foreground: 40 33% 98%;
+    --sidebar-accent: 35 25% 93%;
+    --sidebar-accent-foreground: 30 15% 30%;
+    --sidebar-border: 35 18% 88%;
+    --sidebar-ring: 145 25% 38%;
   }
 
   .dark {
-    /* Dark mode - Deep brown/green tones */
-    --background: 25 25% 10%;
-    --foreground: 40 20% 92%;
-
-    --card: 25 22% 14%;
-    --card-foreground: 40 20% 92%;
-
-    --popover: 25 22% 14%;
-    --popover-foreground: 40 20% 92%;
-
-    --primary: 145 40% 50%;
-    --primary-foreground: 25 25% 10%;
-
-    --secondary: 25 18% 20%;
-    --secondary-foreground: 40 20% 88%;
-
-    --muted: 25 18% 18%;
-    --muted-foreground: 35 15% 60%;
-
-    --accent: 35 70% 50%;
-    --accent-foreground: 25 25% 10%;
-
-    --destructive: 0 60% 45%;
-    --destructive-foreground: 40 20% 92%;
-
-    --border: 25 18% 22%;
-    --input: 25 18% 22%;
-    --ring: 145 40% 50%;
-
-    --sell: 35 75% 50%;
-    --sell-foreground: 25 25% 10%;
-    --lend: 200 55% 50%;
-    --lend-foreground: 25 25% 10%;
-    --free: 145 45% 45%;
-    --free-foreground: 25 25% 10%;
-
-    --available: 145 45% 45%;
-    --reserved: 35 75% 50%;
-    --taken: 0 50% 45%;
-
-    --gradient-hero: linear-gradient(135deg, hsl(145 40% 50%), hsl(145 40% 40%));
-    --gradient-card: linear-gradient(180deg, hsl(25 22% 15%), hsl(25 22% 12%));
-    --gradient-warm: linear-gradient(135deg, hsl(35 70% 50% / 0.1), hsl(25 25% 10%));
-
-    --shadow-sm: 0 1px 2px hsl(0 0% 0% / 0.2);
-    --shadow-md: 0 4px 12px hsl(0 0% 0% / 0.3);
-    --shadow-lg: 0 8px 24px hsl(0 0% 0% / 0.4);
-    --shadow-glow: 0 0 20px hsl(145 40% 50% / 0.25);
-
-    --sidebar-background: 25 22% 12%;
-    --sidebar-foreground: 40 20% 92%;
-    --sidebar-primary: 145 40% 50%;
-    --sidebar-primary-foreground: 25 25% 10%;
-    --sidebar-accent: 25 18% 20%;
-    --sidebar-accent-foreground: 40 20% 88%;
-    --sidebar-border: 25 18% 22%;
-    --sidebar-ring: 145 40% 50%;
+    /* Keeping light theme only for this warm design */
+    --background: 40 33% 98%;
+    --foreground: 30 15% 25%;
+    --card: 38 40% 97%;
+    --card-foreground: 30 15% 25%;
+    --popover: 38 40% 97%;
+    --popover-foreground: 30 15% 25%;
+    --primary: 145 25% 38%;
+    --primary-foreground: 40 33% 98%;
+    --secondary: 35 25% 93%;
+    --secondary-foreground: 30 15% 30%;
+    --muted: 35 18% 92%;
+    --muted-foreground: 30 10% 50%;
+    --accent: 32 35% 88%;
+    --accent-foreground: 30 15% 25%;
+    --destructive: 0 55% 55%;
+    --destructive-foreground: 40 33% 98%;
+    --border: 35 18% 88%;
+    --input: 35 20% 91%;
+    --ring: 145 25% 38%;
+    --sell: 32 60% 52%;
+    --sell-foreground: 40 33% 98%;
+    --lend: 195 45% 48%;
+    --lend-foreground: 40 33% 98%;
+    --free: 145 40% 42%;
+    --free-foreground: 40 33% 98%;
+    --available: 145 40% 42%;
+    --reserved: 32 60% 52%;
+    --taken: 0 45% 52%;
+    --shadow-sm: 0 1px 2px hsl(30 15% 25% / 0.04);
+    --shadow-md: 0 2px 8px hsl(30 15% 25% / 0.06);
+    --shadow-lg: 0 4px 16px hsl(30 15% 25% / 0.08);
+    --sidebar-background: 38 40% 97%;
+    --sidebar-foreground: 30 15% 25%;
+    --sidebar-primary: 145 25% 38%;
+    --sidebar-primary-foreground: 40 33% 98%;
+    --sidebar-accent: 35 25% 93%;
+    --sidebar-accent-foreground: 30 15% 30%;
+    --sidebar-border: 35 18% 88%;
+    --sidebar-ring: 145 25% 38%;
   }
 }
 
@@ -159,10 +133,24 @@
 
   body {
     @apply bg-background text-foreground font-sans antialiased;
+    line-height: 1.7;
   }
 
   h1, h2, h3, h4, h5, h6 {
-    @apply font-serif font-bold tracking-tight;
+    @apply font-sans font-semibold tracking-tight;
+    line-height: 1.3;
+  }
+
+  h1 {
+    @apply text-2xl md:text-3xl font-semibold;
+  }
+
+  h2 {
+    @apply text-xl md:text-2xl font-semibold;
+  }
+
+  h3 {
+    @apply text-lg font-medium;
   }
 }
 
@@ -172,15 +160,17 @@
   }
 
   .content-container {
-    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+    @apply max-w-6xl mx-auto px-4 sm:px-6;
   }
 
   .card-elevated {
-    @apply bg-card rounded-xl shadow-md border border-border/50 transition-all duration-300;
+    @apply bg-card rounded-lg border border-border transition-all duration-200;
+    box-shadow: var(--shadow-sm);
   }
 
   .card-elevated:hover {
-    @apply shadow-lg -translate-y-1;
+    box-shadow: var(--shadow-md);
+    transform: translateY(-2px);
   }
 
   .badge-sell {
@@ -208,11 +198,11 @@
   }
 
   .input-field {
-    @apply bg-background border-input focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all duration-200;
+    @apply bg-background border-border focus:border-primary/50 focus:ring-1 focus:ring-primary/20 transition-all duration-200 rounded-lg;
   }
 
   .link-underline {
-    @apply relative inline-block after:content-[''] after:absolute after:w-full after:scale-x-0 after:h-0.5 after:bottom-0 after:left-0 after:bg-primary after:origin-bottom-right after:transition-transform after:duration-300 hover:after:scale-x-100 hover:after:origin-bottom-left;
+    @apply relative inline-block after:content-[''] after:absolute after:w-full after:scale-x-0 after:h-0.5 after:bottom-0 after:left-0 after:bg-primary after:origin-bottom-right after:transition-transform after:duration-200 hover:after:scale-x-100 hover:after:origin-bottom-left;
   }
 }
 
@@ -222,32 +212,23 @@
   }
 
   .animate-fade-up {
-    animation: fadeUp 0.5s ease-out forwards;
+    animation: fadeUp 0.4s ease-out forwards;
   }
 
   .animate-fade-in {
-    animation: fadeIn 0.3s ease-out forwards;
+    animation: fadeIn 0.25s ease-out forwards;
   }
 
-  .animate-scale-in {
-    animation: scaleIn 0.3s ease-out forwards;
-  }
-
-  .animate-slide-up {
-    animation: slideUp 0.4s ease-out forwards;
-  }
-
-  .stagger-1 { animation-delay: 0.1s; }
-  .stagger-2 { animation-delay: 0.2s; }
-  .stagger-3 { animation-delay: 0.3s; }
-  .stagger-4 { animation-delay: 0.4s; }
-  .stagger-5 { animation-delay: 0.5s; }
+  .stagger-1 { animation-delay: 0.05s; }
+  .stagger-2 { animation-delay: 0.1s; }
+  .stagger-3 { animation-delay: 0.15s; }
+  .stagger-4 { animation-delay: 0.2s; }
 }
 
 @keyframes fadeUp {
   from {
     opacity: 0;
-    transform: translateY(20px);
+    transform: translateY(12px);
   }
   to {
     opacity: 1;
@@ -258,26 +239,4 @@
 @keyframes fadeIn {
   from { opacity: 0; }
   to { opacity: 1; }
-}
-
-@keyframes scaleIn {
-  from {
-    opacity: 0;
-    transform: scale(0.95);
-  }
-  to {
-    opacity: 1;
-    transform: scale(1);
-  }
-}
-
-@keyframes slideUp {
-  from {
-    opacity: 0;
-    transform: translateY(30px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
 }

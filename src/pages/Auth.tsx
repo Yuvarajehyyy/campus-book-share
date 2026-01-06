@@ -40,7 +40,6 @@ const Auth = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    // Check if already logged in
     supabase.auth.getSession().then(({ data: { session } }) => {
       if (session) {
         navigate("/dashboard");
@@ -119,7 +118,6 @@ const Auth = () => {
     } catch (error: any) {
       let message = error.message;
       
-      // Handle common errors with friendly messages
       if (message.includes("User already registered")) {
         message = "An account with this email already exists. Please sign in instead.";
       } else if (message.includes("Invalid login credentials")) {
@@ -140,29 +138,29 @@ const Auth = () => {
     <div className="page-container flex flex-col min-h-screen">
       <Header />
       
-      <main className="flex-1 flex items-center justify-center py-12 px-4">
-        <div className="w-full max-w-md">
+      <main className="flex-1 flex items-center justify-center py-10 px-4">
+        <div className="w-full max-w-sm">
           {/* Logo */}
-          <div className="text-center mb-8 animate-fade-up">
-            <div className="inline-flex items-center justify-center p-3 bg-primary rounded-xl mb-4">
-              <BookOpen className="h-8 w-8 text-primary-foreground" />
+          <div className="text-center mb-6 animate-fade-up">
+            <div className="inline-flex items-center justify-center p-2.5 bg-primary rounded-lg mb-3">
+              <BookOpen className="h-6 w-6 text-primary-foreground" />
             </div>
-            <h1 className="font-serif text-2xl font-bold text-foreground">
+            <h1 className="text-xl font-semibold text-foreground">
               {isSignUp ? "Create your account" : "Welcome back"}
             </h1>
-            <p className="text-muted-foreground mt-2">
+            <p className="text-sm text-muted-foreground mt-1">
               {isSignUp
-                ? "Join the campus book exchange community"
+                ? "Join the campus book exchange"
                 : "Sign in to access your dashboard"}
             </p>
           </div>
 
           {/* Form */}
-          <form onSubmit={handleSubmit} className="space-y-4 animate-fade-up stagger-1">
-            <div className="bg-card rounded-xl border border-border p-6 shadow-sm space-y-4">
+          <form onSubmit={handleSubmit} className="animate-fade-up stagger-1">
+            <div className="bg-card rounded-lg border border-border p-5 space-y-4">
               {isSignUp && (
-                <div className="space-y-2">
-                  <Label htmlFor="name">Full Name</Label>
+                <div className="space-y-1.5">
+                  <Label htmlFor="name" className="text-sm">Full Name</Label>
                   <div className="relative">
                     <User className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
                     <Input
@@ -171,15 +169,15 @@ const Auth = () => {
                       placeholder="John Doe"
                       value={formData.name}
                       onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                      className="pl-10 input-field"
+                      className="pl-9 input-field text-sm"
                     />
                   </div>
-                  {errors.name && <p className="text-sm text-destructive">{errors.name}</p>}
+                  {errors.name && <p className="text-xs text-destructive">{errors.name}</p>}
                 </div>
               )}
 
-              <div className="space-y-2">
-                <Label htmlFor="email">Email</Label>
+              <div className="space-y-1.5">
+                <Label htmlFor="email" className="text-sm">Email</Label>
                 <div className="relative">
                   <Mail className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
                   <Input
@@ -188,14 +186,14 @@ const Auth = () => {
                     placeholder="you@college.edu"
                     value={formData.email}
                     onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                    className="pl-10 input-field"
+                    className="pl-9 input-field text-sm"
                   />
                 </div>
-                {errors.email && <p className="text-sm text-destructive">{errors.email}</p>}
+                {errors.email && <p className="text-xs text-destructive">{errors.email}</p>}
               </div>
 
-              <div className="space-y-2">
-                <Label htmlFor="password">Password</Label>
+              <div className="space-y-1.5">
+                <Label htmlFor="password" className="text-sm">Password</Label>
                 <div className="relative">
                   <Lock className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
                   <Input
@@ -204,7 +202,7 @@ const Auth = () => {
                     placeholder="••••••••"
                     value={formData.password}
                     onChange={(e) => setFormData({ ...formData, password: e.target.value })}
-                    className="pl-10 pr-10 input-field"
+                    className="pl-9 pr-9 input-field text-sm"
                   />
                   <button
                     type="button"
@@ -214,13 +212,13 @@ const Auth = () => {
                     {showPassword ? <EyeOff className="h-4 w-4" /> : <Eye className="h-4 w-4" />}
                   </button>
                 </div>
-                {errors.password && <p className="text-sm text-destructive">{errors.password}</p>}
+                {errors.password && <p className="text-xs text-destructive">{errors.password}</p>}
               </div>
 
               {isSignUp && (
                 <>
-                  <div className="space-y-2">
-                    <Label htmlFor="department">Department (Optional)</Label>
+                  <div className="space-y-1.5">
+                    <Label htmlFor="department" className="text-sm">Department (Optional)</Label>
                     <div className="relative">
                       <Building className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
                       <Input
@@ -229,13 +227,13 @@ const Auth = () => {
                         placeholder="Computer Science"
                         value={formData.department}
                         onChange={(e) => setFormData({ ...formData, department: e.target.value })}
-                        className="pl-10 input-field"
+                        className="pl-9 input-field text-sm"
                       />
                     </div>
                   </div>
 
-                  <div className="space-y-2">
-                    <Label htmlFor="semester">Semester/Year (Optional)</Label>
+                  <div className="space-y-1.5">
+                    <Label htmlFor="semester" className="text-sm">Semester/Year (Optional)</Label>
                     <div className="relative">
                       <GraduationCap className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
                       <Input
@@ -244,21 +242,21 @@ const Auth = () => {
                         placeholder="B.E CSE Sem 4"
                         value={formData.semester}
                         onChange={(e) => setFormData({ ...formData, semester: e.target.value })}
-                        className="pl-10 input-field"
+                        className="pl-9 input-field text-sm"
                       />
                     </div>
                   </div>
                 </>
               )}
 
-              <Button type="submit" variant="hero" className="w-full" disabled={loading}>
+              <Button type="submit" className="w-full font-medium" disabled={loading}>
                 {loading ? "Please wait..." : isSignUp ? "Create Account" : "Sign In"}
               </Button>
             </div>
           </form>
 
           {/* Toggle */}
-          <p className="text-center mt-6 text-muted-foreground animate-fade-up stagger-2">
+          <p className="text-center mt-5 text-sm text-muted-foreground animate-fade-up stagger-2">
             {isSignUp ? "Already have an account?" : "Don't have an account?"}{" "}
             <button
               type="button"

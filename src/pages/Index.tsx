@@ -94,19 +94,19 @@ const Index = () => {
         <HeroSection />
 
         {/* Books Section */}
-        <section id="books" className="py-12 md:py-16">
+        <section id="books" className="py-10 md:py-12">
           <div className="content-container">
-            <div className="text-center mb-8">
-              <h2 className="font-serif text-3xl md:text-4xl font-bold text-foreground mb-2">
+            <div className="text-center mb-6">
+              <h2 className="text-2xl md:text-3xl font-semibold text-foreground mb-1.5">
                 Available Books
               </h2>
-              <p className="text-muted-foreground">
+              <p className="text-muted-foreground text-sm">
                 Find textbooks from students in your campus
               </p>
             </div>
 
             {/* Filters */}
-            <div className="mb-8">
+            <div className="mb-6">
               <BookFilters
                 searchQuery={searchQuery}
                 setSearchQuery={setSearchQuery}
@@ -120,36 +120,36 @@ const Index = () => {
 
             {/* Books Grid */}
             {loading ? (
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+              <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4">
                 {[...Array(8)].map((_, i) => (
-                  <div key={i} className="space-y-3">
-                    <Skeleton className="aspect-[3/4] rounded-xl" />
-                    <Skeleton className="h-6 w-3/4" />
+                  <div key={i} className="space-y-2">
+                    <Skeleton className="aspect-[4/5] rounded-lg" />
+                    <Skeleton className="h-5 w-3/4" />
                     <Skeleton className="h-4 w-1/2" />
                   </div>
                 ))}
               </div>
             ) : filteredBooks.length === 0 ? (
-              <div className="text-center py-16">
-                <div className="inline-flex items-center justify-center w-16 h-16 bg-secondary rounded-full mb-4">
-                  <BookOpen className="h-8 w-8 text-muted-foreground" />
+              <div className="text-center py-12">
+                <div className="inline-flex items-center justify-center w-14 h-14 bg-secondary rounded-full mb-3">
+                  <BookOpen className="h-7 w-7 text-muted-foreground" />
                 </div>
-                <h3 className="font-serif text-xl font-bold text-foreground mb-2">
+                <h3 className="text-lg font-medium text-foreground mb-1">
                   No books found
                 </h3>
-                <p className="text-muted-foreground">
+                <p className="text-sm text-muted-foreground">
                   {searchQuery || categoryFilter !== "all" || courseFilter !== "all"
                     ? "Try adjusting your filters"
                     : "Be the first to list a book!"}
                 </p>
               </div>
             ) : (
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+              <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4">
                 {filteredBooks.map((book, index) => (
                   <div
                     key={book.id}
                     className="animate-fade-up"
-                    style={{ animationDelay: `${index * 0.05}s` }}
+                    style={{ animationDelay: `${index * 0.03}s` }}
                   >
                     <BookCard
                       id={book.id}

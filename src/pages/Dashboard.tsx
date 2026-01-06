@@ -49,41 +49,50 @@ const Dashboard = () => {
   return (
     <div className="page-container flex flex-col min-h-screen">
       <Header />
-      <main className="flex-1 py-8">
+      <main className="flex-1 py-6">
         <div className="content-container">
-          <div className="flex items-center justify-between mb-8">
-            <h1 className="font-serif text-3xl font-bold">My Dashboard</h1>
-            <Link to="/books/new"><Button variant="hero"><Plus className="h-4 w-4" /> List a Book</Button></Link>
+          <div className="flex items-center justify-between mb-6">
+            <h1 className="text-2xl font-semibold">My Dashboard</h1>
+            <Link to="/books/new">
+              <Button size="sm" className="font-medium">
+                <Plus className="h-4 w-4" /> List a Book
+              </Button>
+            </Link>
           </div>
-          {loading ? <p>Loading...</p> : books.length === 0 ? (
-            <div className="text-center py-16 bg-card rounded-xl border">
-              <BookOpen className="h-12 w-12 mx-auto text-muted-foreground mb-4" />
-              <h3 className="font-serif text-xl font-bold mb-2">No books listed yet</h3>
-              <Link to="/books/new"><Button variant="hero"><Plus className="h-4 w-4" /> List Your First Book</Button></Link>
+          {loading ? <p className="text-sm text-muted-foreground">Loading...</p> : books.length === 0 ? (
+            <div className="text-center py-12 bg-card rounded-lg border border-border">
+              <BookOpen className="h-10 w-10 mx-auto text-muted-foreground mb-3" />
+              <h3 className="text-lg font-medium mb-1.5">No books listed yet</h3>
+              <p className="text-sm text-muted-foreground mb-4">Start sharing your textbooks with fellow students</p>
+              <Link to="/books/new">
+                <Button size="sm" className="font-medium">
+                  <Plus className="h-4 w-4" /> List Your First Book
+                </Button>
+              </Link>
             </div>
           ) : (
-            <div className="space-y-4">
+            <div className="space-y-3">
               {books.map(book => (
-                <div key={book.id} className="bg-card rounded-xl border p-4 flex flex-col md:flex-row gap-4 items-start md:items-center">
-                  <div className="w-16 h-20 bg-secondary rounded-lg overflow-hidden shrink-0">
-                    {book.image_url ? <img src={book.image_url} className="w-full h-full object-cover" /> : <div className="w-full h-full flex items-center justify-center"><BookOpen className="h-6 w-6 text-muted-foreground" /></div>}
+                <div key={book.id} className="bg-card rounded-lg border border-border p-3.5 flex flex-col md:flex-row gap-3 items-start md:items-center">
+                  <div className="w-12 h-16 bg-secondary rounded-md overflow-hidden shrink-0">
+                    {book.image_url ? <img src={book.image_url} className="w-full h-full object-cover" /> : <div className="w-full h-full flex items-center justify-center"><BookOpen className="h-5 w-5 text-muted-foreground/40" /></div>}
                   </div>
-                  <div className="flex-1">
-                    <h3 className="font-serif font-bold">{book.title}</h3>
+                  <div className="flex-1 min-w-0">
+                    <h3 className="font-medium text-foreground truncate">{book.title}</h3>
                     <p className="text-sm text-muted-foreground">{book.author}</p>
-                    <Badge className={`mt-1 ${getCategoryColor(book.category)}`}>{book.category === "sell" && book.price ? `₹${book.price}` : book.category}</Badge>
+                    <Badge className={`mt-1.5 text-xs ${getCategoryColor(book.category)}`}>{book.category === "sell" && book.price ? `₹${book.price}` : book.category}</Badge>
                   </div>
-                  <Select value={book.status} onValueChange={(v) => updateStatus(book.id, v)}>
-                    <SelectTrigger className="w-32"><SelectValue /></SelectTrigger>
+                  <Select value={book.status} onValueChange={(v: "available" | "reserved" | "taken") => updateStatus(book.id, v)}>
+                    <SelectTrigger className="w-28 text-sm"><SelectValue /></SelectTrigger>
                     <SelectContent>
                       <SelectItem value="available">Available</SelectItem>
                       <SelectItem value="reserved">Reserved</SelectItem>
                       <SelectItem value="taken">Taken</SelectItem>
                     </SelectContent>
                   </Select>
-                  <div className="flex gap-2">
-                    <Link to={`/books/edit/${book.id}`}><Button variant="outline" size="icon"><Edit className="h-4 w-4" /></Button></Link>
-                    <Button variant="outline" size="icon" onClick={() => deleteBook(book.id)}><Trash2 className="h-4 w-4 text-destructive" /></Button>
+                  <div className="flex gap-1.5">
+                    <Link to={`/books/edit/${book.id}`}><Button variant="outline" size="icon" className="h-8 w-8"><Edit className="h-3.5 w-3.5" /></Button></Link>
+                    <Button variant="outline" size="icon" className="h-8 w-8" onClick={() => deleteBook(book.id)}><Trash2 className="h-3.5 w-3.5 text-destructive" /></Button>
                   </div>
                 </div>
               ))}
