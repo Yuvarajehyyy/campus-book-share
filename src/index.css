@@ -164,13 +164,12 @@
   }
 
   .card-elevated {
-    @apply bg-card rounded-lg border border-border transition-all duration-200;
+    @apply bg-card rounded-lg border border-border;
     box-shadow: var(--shadow-sm);
   }
 
   .card-elevated:hover {
     box-shadow: var(--shadow-md);
-    transform: translateY(-2px);
   }
 
   .badge-sell {
