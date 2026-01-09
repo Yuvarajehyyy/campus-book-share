@@ -121,6 +121,14 @@ const Header = () => {
               )}
             </div>
 
+            {/* Exchange Link */}
+            <Link 
+              to="/exchange" 
+              className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
+            >
+              Exchange
+            </Link>
+
             {user && (
               <>
                 <Link 
