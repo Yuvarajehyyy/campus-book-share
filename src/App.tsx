@@ -11,6 +11,7 @@ import BookForm from "./pages/BookForm";
 import Profile from "./pages/Profile";
 import BrowseBooks from "./pages/BrowseBooks";
 import Notifications from "./pages/Notifications";
+import Exchange from "./pages/Exchange";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -24,6 +25,7 @@ const App = () => (
         <Routes>
           <Route path="/" element={<Index />} />
           <Route path="/browse" element={<BrowseBooks />} />
+          <Route path="/exchange" element={<Exchange />} />
           <Route path="/notifications" element={<Notifications />} />
           <Route path="/auth" element={<Auth />} />
           <Route path="/dashboard" element={<Dashboard />} />
